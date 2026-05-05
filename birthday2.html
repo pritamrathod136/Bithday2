@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎉</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #42e695);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background animation */
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 25px;
+    width: 360px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+    animation: pop 1.2s ease;
+}
+
+@keyframes pop {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+/* Typing effect */
+.typing {
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end), blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from {width: 0}
+    to {width: 100%}
+}
+
+@keyframes blink {
+    50% {border-color: transparent;}
+}
+
+/* Button */
+.btn {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff4d6d;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: float 8s infinite;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background: white;
+    top: 50px;
+    left: 50%;
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-120vh);}
+}
+
+.balloon:nth-child(1){left:10%; background:#ff4d6d; animation-duration:7s;}
+.balloon:nth-child(2){left:30%; background:#ffd93d; animation-duration:9s;}
+.balloon:nth-child(3){left:50%; background:#6bcB77; animation-duration:6s;}
+.balloon:nth-child(4){left:70%; background:#4d96ff; animation-duration:8s;}
+.balloon:nth-child(5){left:90%; background:#ff6ec4; animation-duration:10s;}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    top: 0;
+    animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Balloons -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<!-- Confetti -->
+<script>
+for(let i=0;i<60;i++){
+    let conf = document.createElement("div");
+    conf.className="confetti";
+    conf.style.left = Math.random()*100+"%";
+    conf.style.animationDuration = (Math.random()*3+2)+"s";
+    document.body.appendChild(conf);
+}
+</script>
+
+<!-- Music -->
+<audio id="music" autoplay loop>
+    <source src="_Birthe_Day_Song_Ringtone_(by Fringster.com).mp3" type="audio/mp3">
+</audio>
+
+<!-- Card -->
+<div class="card">
+    <h1>🎂 Happy Birthday 🎉</h1>
+
+    <p class="typing">
+        Wishing you happiness, success, and endless smiles.
+        You’re truly an amazing friend!
+    </p>
+
+    <button class="btn" onclick="surprise()">🎁 Surprise</button>
+    <button class="btn" onclick="toggleMusic()">🎵 Music On/Off</button>
+</div>
+
+<script>
+function surprise() {
+    alert("✨ Stay खुश, stay awesome! 😄🎂");
+}
+
+function toggleMusic() {
+    let music = document.getElementById("music");
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+</script>
+
+</body>
+</html>
